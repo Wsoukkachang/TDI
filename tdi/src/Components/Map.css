@@ -21,3 +21,15 @@
   width: 100%;
   border-radius: 5px;
 }
+/* enlarge map on smaller screens */
+@media only screen and (max-width: 600px) {
+  .map {
+    height: 30vh;
+    width: 80vw;
+    background-color: white;
+    padding: 0.4rem;
+    border-radius: 20px;
+    margin-top: 16px;
+    box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+  }
+}
