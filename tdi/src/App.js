@@ -1,25 +1,19 @@
 import "./App.css";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Card,
-  FormControlLabel,
-  Switch,
-  Typography,
-  TextField,
-  Button,
-  CardActionArea,
-} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
 import ButtonAppBar from "./Components/AppBar";
-import Map from "./Components/Map";
+import SiteMap from "./Components/Map";
+import About from "./Components/About";
+import Carousel from "./Components/Carousel";
 
 function App() {
+  let mapCenter = { lat: 32.738773, lng: -97.003098 };
+
+  let mapZoom = 12;
   return (
     <div className="App">
       <ButtonAppBar />
-      <Map />
+      <SiteMap center={mapCenter} zoom={mapZoom} />
+      <About />
+      <Carousel />
       <header className="App-header"></header>
     </div>
   );
