@@ -1,7 +1,16 @@
+.mapContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  /* flex-grow: 1; */
+}
+
 .map {
-  height: 500px;
+  height: 50vh;
+  width: 50vw;
   background-color: white;
-  padding: 1rem;
+  padding: 0.4rem;
   border-radius: 20px;
   margin-top: 16px;
   box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
@@ -10,5 +19,5 @@
 .map .leaflet-container {
   height: 100%;
   width: 100%;
-  border-radius: 12px;
+  border-radius: 5px;
 }

@@ -89,18 +89,19 @@ export default function SiteMap({ center, zoom }) {
     //   onLoad={handleScriptLoad()}
     // >
     // </Script>
+    <div className="mapContainer">
+      <div className="map" id="windy">
+        <MapContainer center={center} zoom={zoom}>
+          <Marker position={center}>
+            <Popup> Hello </Popup>
+          </Marker>
 
-    <div className="map" id="windy">
-      <MapContainer center={center} zoom={zoom}>
-        <Marker position={center}>
-          <Popup> Hello </Popup>
-        </Marker>
-
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://maptiles.p.rapidapi.com/en/map/v1/{z}/{x}/{y}.png?rapidapi-key=0ea065ba13mshcd46c3b0a24ab40p1fdad0jsn6f4ee991f91f"
-        />
-      </MapContainer>
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://maptiles.p.rapidapi.com/en/map/v1/{z}/{x}/{y}.png?rapidapi-key=0ea065ba13mshcd46c3b0a24ab40p1fdad0jsn6f4ee991f91f"
+          />
+        </MapContainer>
+      </div>
     </div>
   );
 }

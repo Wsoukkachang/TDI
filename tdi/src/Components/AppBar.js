@@ -42,7 +42,13 @@ export default function ButtonAppBar() {
         <Typography variant="h6" className={classes.title}>
           Texas Drone Imaging
         </Typography>
-        <Button color="inherit">About</Button>
+        <a>
+          <div class="flex icon" id="icon-3">
+            <Button href="mailto: saul@texasdroneimaging.net" color="inherit">
+              Contact
+            </Button>
+          </div>
+        </a>
       </Toolbar>
     </AppBar>
   );
