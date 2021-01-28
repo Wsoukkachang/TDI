@@ -7,10 +7,20 @@
 }
 
 .map {
-  height: 50vh;
-  width: 50vw;
+  width: 50%;
+  height: 100%;
   background-color: white;
   padding: 0.4rem;
+  border-radius: 20px;
+  margin-top: 16px;
+  box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+}
+
+.windyMap {
+  width: 60%;
+  height: 30vh;
+  background-color: white;
+  padding: 0.2rem;
   border-radius: 20px;
   margin-top: 16px;
   box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
@@ -23,12 +33,14 @@
 }
 /* enlarge map on smaller screens */
 @media only screen and (max-width: 600px) {
-  .map {
-    height: 30vh;
-    width: 80vw;
+  .windyMap {
+    width: 400px;
+    height: 350px;
+    /* height: 30vh;
+    width: 80vw; */
     background-color: white;
-    padding: 0.4rem;
-    border-radius: 20px;
+    padding: 0.2rem;
+    /* border-radius: 20px; */
     margin-top: 16px;
     box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
   }

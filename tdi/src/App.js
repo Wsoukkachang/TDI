@@ -59,8 +59,8 @@ function App() {
       <ButtonAppBar />
 
       <Logo />
-      <About />
 
+      <About />
       <div className="slidesContainer">
         <div className="slides">
           <button onClick={() => dispatch({ type: "PREV" })}>‹</button>
@@ -72,8 +72,9 @@ function App() {
         </div>
       </div>
 
-      <SiteMap center={mapCenter} zoom={mapZoom} />
       <header className="App-header"></header>
+      <SiteMap center={mapCenter} zoom={mapZoom} />
+
       <Footer />
     </div>
   );
