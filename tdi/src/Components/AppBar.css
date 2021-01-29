@@ -1,0 +1,14 @@
+/* .appBar {
+  height: 64px;
+} */
+.MuiButton-root {
+  font-size: 0.8rem !important;
+}
+
+/* shrink logo on smaller devices */
+
+/* @media only screen and (max-width: 600px) {
+  .appBar {
+    height: 50px;
+  }
+} */

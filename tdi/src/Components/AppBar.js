@@ -1,3 +1,4 @@
+import React from "react";
 import {
   AppBar,
   Toolbar,
@@ -7,6 +8,9 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import "./AppBar.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,9 +31,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
-    <AppBar position="static" color={classes.backgroundColor}>
+    <AppBar
+      position="static"
+      color={classes.backgroundColor}
+      className="appBar"
+    >
       <Toolbar>
         <IconButton
           edge="start"
@@ -37,8 +54,28 @@ export default function ButtonAppBar() {
           color="inherit"
           aria-label="menu"
         >
-          <MenuIcon />
+          <div>
+            <MenuIcon
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onClick={handleClick}
+            />
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>
+                Portfolio (Under Construction)
+              </MenuItem>
+              {/* <MenuItem onClick={handleClose}>My account</MenuItem>
+              <MenuItem onClick={handleClose}>Logout</MenuItem> */}
+            </Menu>
+          </div>
         </IconButton>
+
         <Typography variant="h6" className={classes.title}>
           Texas Drone Imaging
         </Typography>

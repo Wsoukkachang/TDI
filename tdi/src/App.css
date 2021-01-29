@@ -1,5 +1,5 @@
 * {
-  margin: 0;
+  /* margin: 0; */
   /* outline: 1px solid red; */
 }
 
@@ -14,10 +14,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px;
   flex-grow: 1;
   overflow-x: hidden;
   overflow-y: visible;
+}
+
+.MuiTypography-h6 {
+  font-size: 1rem !important;
+}
+
+.MuiSvgIcon-root {
+  font-size: 1rem !important;
 }
 
 .slidesContainer {
@@ -26,4 +33,14 @@
   padding: 20px;
   margin: 30px;
   /* flex-grow: 1; */
+}
+
+.MuiToolbar-regular {
+  min-height: 10px !important;
+}
+
+/* scroll up button */
+.MuiFab-secondary {
+  color: #fff;
+  background-color: #e9453f !important;
 }
