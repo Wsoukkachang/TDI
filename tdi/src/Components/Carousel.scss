@@ -1,21 +1,12 @@
-// *::before,
-// *::after {
-//   box-sizing: border-box;
-//   position: relative;
+// html,
+// body {
+//   margin: 0;
+//   padding: 0;
+//   font-size: 3vmin;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
 // }
-
-html,
-body {
-  // object-fit: cover;
-  // height: 100%;
-  // width: 100%;
-  margin: 0;
-  padding: 0;
-  font-size: 3vmin;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
 html {
   background: #151515;
@@ -64,18 +55,6 @@ body {
       right: 10%;
     }
   }
-}
-
-.slide {
-  //transform-style: preserve-3d;
-  // border: solid 1px red;
-
-  // &[data-active] {
-  //   .slideContent > * {
-  //     transform: none;
-  //     opacity: 1;
-  //   }
-  // }
 }
 
 .slideContent {

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { CardMedia } from "@material-ui/core";
+import Oval from "../Images/TDI_Oval_Logo.PNG";
 import "./Logo.css";
 
 export default class Logo extends Component {
   render() {
     return (
       <div className="logoContainer">
-        <img className="logoImg" src="https://i.imgur.com/7GnR40o.png"></img>
+        <img className="logoImg" alt="logoImg" src={Oval}></img>
       </div>
     );
   }

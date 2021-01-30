@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Typist from "react-typist";
-import { Divider, Typography } from "@material-ui/core";
+import { Divider } from "@material-ui/core";
 import "./About.scss";
 
 export default class About extends Component {
@@ -10,7 +10,7 @@ export default class About extends Component {
         <h1 className="aboutDiv">About Us</h1>
         <Divider variant="fullWidth" />
         <Typist>
-          <span className="my-custom-class">
+          <span className="aboutParagraph">
             SOLUTIONS WITH NEW PERSPECTIVES. OUR COMPANY IS CONSTANTLY EVOLVING
             AND GROWING.
             <br />

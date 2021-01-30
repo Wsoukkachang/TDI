@@ -1,8 +1,15 @@
 /* .appBar {
   height: 64px;
 } */
+
+/* contact button in NavBar */
 .MuiButton-root {
   font-size: 0.8rem !important;
+}
+
+/* NavBar width */
+.MuiAppBar-root {
+  width: 100vw !important;
 }
 
 /* shrink logo on smaller devices */

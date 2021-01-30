@@ -4,13 +4,11 @@
 }
 
 .app {
-  /* background-image: url(https://i.imgur.com/5FUma9X.jpg); */
+  width: 100vw;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
-  /* width: 100vw;
-  height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -42,5 +40,5 @@
 /* scroll up button */
 .MuiFab-secondary {
   color: #fff;
-  background-color: #e9453f !important;
+  background-color: #e91710 !important;
 }

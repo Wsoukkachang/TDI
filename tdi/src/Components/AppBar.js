@@ -29,6 +29,36 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// const handleClickAbout = (event) => {
+//   const anchor = (event.target.ownerDocument || document).querySelector(
+//     "#about-anchor"
+//   );
+
+//   if (anchor) {
+//     anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+//   }
+// };
+
+// const handleClickGallery = (event) => {
+//   const anchor = (event.target.ownerDocument || document).querySelector(
+//     "#gallery-anchor"
+//   );
+
+//   if (anchor) {
+//     anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+//   }
+// };
+
+// const handleClickMap = (event) => {
+//   const anchor = (event.target.ownerDocument || document).querySelector(
+//     "#map-anchor"
+//   );
+
+//   if (anchor) {
+//     anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+//   }
+// };
+
 export default function ButtonAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -48,44 +78,41 @@ export default function ButtonAppBar() {
       className="appBar"
     >
       <Toolbar>
-        <IconButton
-          edge="start"
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="menu"
-        >
-          <div>
-            <MenuIcon
-              aria-controls="simple-menu"
-              aria-haspopup="true"
-              onClick={handleClick}
-            />
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleClose}>
-                Portfolio (Under Construction)
-              </MenuItem>
-              {/* <MenuItem onClick={handleClose}>My account</MenuItem>
-              <MenuItem onClick={handleClose}>Logout</MenuItem> */}
-            </Menu>
-          </div>
-        </IconButton>
+        <div>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+            aria-controls="simple-menu"
+            aria-haspopup="true"
+            onClick={handleClick}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose}>
+              Portfolio (Under Construction)
+            </MenuItem>
+            {/* <MenuItem onClick={handleClose}>Portfolio</MenuItem>
+            <MenuItem onClick={handleClose}>Wind Map</MenuItem> */}
+          </Menu>
+        </div>
 
         <Typography variant="h6" className={classes.title}>
           Texas Drone Imaging
         </Typography>
-        <a>
-          <div class="flex icon" id="icon-3">
-            <Button href="mailto: saul@texasdroneimaging.net" color="inherit">
-              Contact
-            </Button>
-          </div>
-        </a>
+        <div class="flex icon" id="icon-3">
+          <Button href="mailto: saul@texasdroneimaging.net" color="inherit">
+            Contact
+          </Button>
+        </div>
       </Toolbar>
     </AppBar>
   );

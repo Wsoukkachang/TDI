@@ -1,12 +1,4 @@
-import React, { Component } from "react";
-import "./App.css";
-import ButtonAppBar from "./Components/AppBar";
-import SiteMap from "./Components/Map";
-import Logo from "./Components/Logo";
-import About from "./Components/About";
-import Slide from "./Components/Carousel";
-import Footer from "./Components/Footer";
-import "./Components/Carousel.scss";
+import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -15,46 +7,13 @@ import Fab from "@material-ui/core/Fab";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import Zoom from "@material-ui/core/Zoom";
 
-const slides = [
-  {
-    title: "Overview",
-    subtitle: "Grand Prairie",
-    description: "Adventure is never far away",
-    image: "https://i.imgur.com/IPaDRCY.jpg",
-  },
-  {
-    title: "Facility",
-    subtitle: "Dallas",
-    description: "Providing new perspectives",
-    image: "https://i.imgur.com/4ewiC70.jpg",
-  },
-  {
-    title: "Fields",
-    subtitle: "Fort Worth",
-    description: "A piece of heaven",
-    image: "https://i.imgur.com/SobliYQ.jpg",
-  },
-];
-
-const initialState = {
-  slideIndex: 0,
-};
-
-const slidesReducer = (state, event) => {
-  if (event.type === "NEXT") {
-    return {
-      ...state,
-      slideIndex: (state.slideIndex + 1) % slides.length,
-    };
-  }
-  if (event.type === "PREV") {
-    return {
-      ...state,
-      slideIndex:
-        state.slideIndex === 0 ? slides.length - 1 : state.slideIndex - 1,
-    };
-  }
-};
+import ButtonAppBar from "./Components/AppBar";
+import Logo from "./Components/Logo";
+import About from "./Components/About";
+import Carousel from "./Components/Carousel";
+import SiteMap from "./Components/Map";
+import Footer from "./Components/Footer";
+import "./App.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,7 +29,6 @@ function ScrollTop(props) {
   const classes = useStyles();
   // Note that you normally won't need to set the window ref as useScrollTrigger
   // will default to window.
-  // This is only being set here because the demo is in an iframe.
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
     disableHysteresis: true,
@@ -97,32 +55,24 @@ function ScrollTop(props) {
 }
 
 function App(props) {
-  const [state, dispatch] = React.useReducer(slidesReducer, initialState);
   let mapCenter = { lat: 32.738773, lng: -97.003098 };
-
   let mapZoom = 12;
+
   return (
     <div className="app">
       <ButtonAppBar />
       <Toolbar id="back-to-top-anchor" />
-
       <Logo />
 
       <About />
+      {/* <Toolbar id="about-anchor" /> */}
 
-      <div className="slidesContainer">
-        <div className="slides">
-          <button onClick={() => dispatch({ type: "PREV" })}>‹</button>
-          {[...slides, ...slides, ...slides].map((slide, i) => {
-            let offset = slides.length + (state.slideIndex - i);
-            return <Slide slide={slide} offset={offset} key={i} />;
-          })}
-          <button onClick={() => dispatch({ type: "NEXT" })}>›</button>
-        </div>
-      </div>
+      <Carousel />
+      {/* <Toolbar id="gallery-anchor" /> */}
 
-      <header className="App-header"></header>
       <SiteMap center={mapCenter} zoom={mapZoom} />
+      {/* <Toolbar id="map-anchor" /> */}
+
       <ScrollTop {...props}>
         <Fab color="secondary" size="small" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />
