@@ -1,9 +1,10 @@
 import React from "react";
 import Slide from "./Slide";
-import "./Carousel.scss";
 import GP from "../Images/GP.PNG";
 import Dallas from "../Images/Dallas.PNG";
 import FW from "../Images/FW.PNG";
+import "animate.css"; // you need to require the css for animation
+import "./Carousel.scss";
 
 const slides = [
   {
@@ -52,12 +53,22 @@ function Carousel() {
   return (
     <div className="slidesContainer">
       <div className="slides">
-        <button onClick={() => dispatch({ type: "PREV" })}>‹</button>
+        <button
+          className="animate__animated animate__bounceInLeft animate__delay-0.5s"
+          onClick={() => dispatch({ type: "PREV" })}
+        >
+          ‹
+        </button>
         {[...slides, ...slides, ...slides].map((slide, i) => {
           let offset = slides.length + (state.slideIndex - i);
           return <Slide slide={slide} offset={offset} key={i} />;
         })}
-        <button onClick={() => dispatch({ type: "NEXT" })}>›</button>
+        <button
+          className="animate__animated animate__bounceInRight animate__delay-0.5s"
+          onClick={() => dispatch({ type: "NEXT" })}
+        >
+          ›
+        </button>
       </div>
     </div>
   );

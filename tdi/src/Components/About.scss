@@ -50,3 +50,10 @@
     font-size: 1rem !important;
   }
 }
+
+// about us font size gets bigger on larger screens
+@media only screen and (min-width: 1200px) {
+  .aboutParagraph {
+    font-size: 2rem !important;
+  }
+}

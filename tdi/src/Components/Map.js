@@ -1,11 +1,11 @@
 import React from "react";
-
+import "animate.css"; // you need to require the css for animation
 import "leaflet/dist/leaflet.css";
 import "./Map.css";
 
 export default function SiteMap({ center, zoom }) {
   return (
-    <div className="mapContainer">
+    <div className="animate__animated animate__backInUp animate__delay-1s mapContainer">
       <iframe
         title="myMap"
         className="windyMap"
