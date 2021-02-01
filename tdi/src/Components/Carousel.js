@@ -54,7 +54,7 @@ function Carousel() {
     <div className="slidesContainer">
       <div className="slides">
         <button
-          className="animate__animated animate__bounceInLeft animate__delay-0.5s"
+          className="animate__animated animate__bounceInLeft animate__delay-0.5s gallery-button"
           onClick={() => dispatch({ type: "PREV" })}
         >
           ‹
@@ -64,7 +64,7 @@ function Carousel() {
           return <Slide slide={slide} offset={offset} key={i} />;
         })}
         <button
-          className="animate__animated animate__bounceInRight animate__delay-0.5s"
+          className="animate__animated animate__bounceInRight animate__delay-0.5s gallery-button"
           onClick={() => dispatch({ type: "NEXT" })}
         >
           ›

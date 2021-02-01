@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Toolbar,
   IconButton,
   Typography,
   Button,
+  Popover,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import NestedMenuItem from "material-ui-nested-menu-item"; //Nested Menu Item
+
+import InstagramIcon from "@material-ui/icons/Instagram";
+import EmailIcon from "@material-ui/icons/Email";
+import PhoneIcon from "@material-ui/icons/Phone";
 import "./AppBar.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -62,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ButtonAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [menuPosition, setMenuPosition] = useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -69,6 +76,26 @@ export default function ButtonAppBar() {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleRightClick = (event: React.MouseEvent) => {
+    if (menuPosition) {
+      return;
+    }
+    event.preventDefault();
+    setMenuPosition({
+      top: event.pageY,
+      left: event.pageX,
+    });
+  };
+
+  const closeAllTabs = () => {
+    handleItemClick();
+    handleClose();
+  };
+
+  const handleItemClick = (event: React.MouseEvent) => {
+    setMenuPosition(null);
   };
 
   return (
@@ -98,21 +125,65 @@ export default function ButtonAppBar() {
             onClose={handleClose}
           >
             <MenuItem onClick={handleClose}>
-              Portfolio (Under Construction)
+              About Us (Under Construction)
             </MenuItem>
-            {/* <MenuItem onClick={handleClose}>Portfolio</MenuItem>
-            <MenuItem onClick={handleClose}>Wind Map</MenuItem> */}
+            <MenuItem onClick={handleClose}>
+              Videos (Under Construction)
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              Gallery (Under Construction)
+            </MenuItem>
+            <NestedMenuItem
+              label="Services (Under Construction)"
+              parentMenuOpen={!!menuPosition}
+              onClick={handleRightClick}
+            >
+              <MenuItem onClick={closeAllTabs}>
+                Residential/ Commercial Real Estate
+              </MenuItem>
+              <MenuItem onClick={closeAllTabs}>
+                Construction Progression
+              </MenuItem>
+              <MenuItem onClick={closeAllTabs}>Land/ Property</MenuItem>
+              <MenuItem onClick={closeAllTabs}>
+                (Future) Overhead Inspections
+              </MenuItem>
+            </NestedMenuItem>
           </Menu>
         </div>
 
         <Typography variant="h6" className={classes.title}>
           Texas Drone Imaging
         </Typography>
-        <div class="flex icon" id="icon-3">
+        <div className="icon-row">
+          <div className="icon-row">
+            <a href="tel:4699102078">
+              <div class="icon" id="icon-1">
+                <PhoneIcon color="secondary" />
+              </div>
+            </a>
+
+            <a
+              href="https://www.instagram.com/texasdroneimaging/"
+              target="_blank"
+            >
+              <div class="icon" id="icon-2">
+                <InstagramIcon color="secondary" />
+              </div>
+            </a>
+
+            <a href="mailto: saul@texasdroneimaging.net">
+              <div class="flex icon" id="icon-3">
+                <EmailIcon color="secondary" />
+              </div>
+            </a>
+          </div>
+        </div>
+        {/* <div class="flex icon" id="icon-3">
           <Button href="mailto: saul@texasdroneimaging.net" color="inherit">
             Contact
           </Button>
-        </div>
+        </div> */}
       </Toolbar>
     </AppBar>
   );
