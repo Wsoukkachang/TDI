@@ -6,6 +6,18 @@ import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Fab from "@material-ui/core/Fab";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import Zoom from "@material-ui/core/Zoom";
+import LazyLoad from "react-lazyload";
+
+import { render } from "react-dom";
+import {
+  Link,
+  DirectLink,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from "react-scroll";
 
 import ButtonAppBar from "./Components/AppBar";
 import Logo from "./Components/Logo";
@@ -65,21 +77,33 @@ function App(props) {
       <Toolbar id="back-to-top-anchor" />
       <Logo />
 
-      <About />
-      {/* <Toolbar id="about-anchor" /> */}
+      <Element name="test1" className="element">
+        <About />
+      </Element>
 
-      <Carousel />
-      {/* <Toolbar id="gallery-anchor" /> */}
+      <LazyLoad height={200} offset={100}>
+        <Element name="test2" className="element">
+          <Carousel />
+        </Element>
+      </LazyLoad>
 
-      <SiteMap center={mapCenter} zoom={mapZoom} />
-      {/* <Toolbar id="map-anchor" /> */}
+      <LazyLoad height={200} offset={100}>
+        <SiteMap center={mapCenter} zoom={mapZoom} />
+      </LazyLoad>
 
-      <ScrollTop {...props}>
-        <Fab color="secondary" size="small" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
-        </Fab>
-      </ScrollTop>
-      <Footer />
+      <LazyLoad height={200} offset={100}>
+        <ScrollTop {...props}>
+          <Fab color="secondary" size="small" aria-label="scroll back to top">
+            <KeyboardArrowUpIcon />
+          </Fab>
+        </ScrollTop>
+      </LazyLoad>
+
+      <LazyLoad height={200} offset={100}>
+        <Element name="test=3" className="element">
+          <Footer />
+        </Element>
+      </LazyLoad>
     </div>
   );
 }

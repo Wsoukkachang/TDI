@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -12,6 +12,17 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import NestedMenuItem from "material-ui-nested-menu-item"; //Nested Menu Item
+
+import { render } from "react-dom";
+import {
+  Link,
+  DirectLink,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from "react-scroll";
 
 import InstagramIcon from "@material-ui/icons/Instagram";
 import EmailIcon from "@material-ui/icons/Email";
@@ -35,49 +46,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const handleClickAbout = (event) => {
-//   const anchor = (event.target.ownerDocument || document).querySelector(
-//     "#about-anchor"
-//   );
-
-//   if (anchor) {
-//     anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-//   }
-// };
-
-// const handleClickGallery = (event) => {
-//   const anchor = (event.target.ownerDocument || document).querySelector(
-//     "#gallery-anchor"
-//   );
-
-//   if (anchor) {
-//     anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-//   }
-// };
-
-// const handleClickMap = (event) => {
-//   const anchor = (event.target.ownerDocument || document).querySelector(
-//     "#map-anchor"
-//   );
-
-//   if (anchor) {
-//     anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-//   }
-// };
-
 export default function ButtonAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [menuPosition, setMenuPosition] = useState(null);
 
+  //anchors menu tab
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+  // closes tab on click
   const handleClose = () => {
     setAnchorEl(null);
   };
 
+  // opens nested tabs
   const handleRightClick = (event: React.MouseEvent) => {
     if (menuPosition) {
       return;
@@ -89,14 +73,44 @@ export default function ButtonAppBar() {
     });
   };
 
+  // closes nested tabs
   const closeAllTabs = () => {
     handleItemClick();
+    handleClose();
+  };
+
+  // scrolls to bottom of page and closes tab
+  const scrollToBottomClose = () => {
+    scroll.scrollToBottom();
     handleClose();
   };
 
   const handleItemClick = (event: React.MouseEvent) => {
     setMenuPosition(null);
   };
+
+  const componentMounted = () => {
+    Events.scrollEvent.register("begin", function () {
+      console.log("begin", arguments);
+    });
+
+    Events.scrollEvent.register("end", function () {
+      console.log("end", arguments);
+    });
+  };
+
+  const componentUnmounted = () => {
+    Events.scrollEvent.remove("begin");
+    Events.scrollEvent.remove("end");
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", componentMounted);
+
+    return function cleanup() {
+      document.removeEventListener("unclick", componentUnmounted);
+    };
+  }, []);
 
   return (
     <AppBar
@@ -124,15 +138,46 @@ export default function ButtonAppBar() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>
-              About Us (Under Construction)
+            <MenuItem>
+              <Link
+                activeClass="active"
+                className="test1"
+                to="test1"
+                spy={true}
+                smooth={true}
+                isDynamic={true}
+                duration={500}
+                onClick={handleClose}
+              >
+                About Us
+              </Link>
             </MenuItem>
+
             <MenuItem onClick={handleClose}>
               Videos (Under Construction)
             </MenuItem>
-            <MenuItem onClick={handleClose}>
-              Gallery (Under Construction)
+
+            <MenuItem>
+              <Link
+                activeClass="active"
+                className="test2"
+                to="test2"
+                spy={true}
+                smooth={true}
+                isDynamic={true}
+                duration={500}
+                onClick={handleClose}
+              >
+                Gallery
+              </Link>
             </MenuItem>
+
+            <MenuItem>
+              <Link isDynamic={true} onClick={scrollToBottomClose}>
+                Wind Map
+              </Link>
+            </MenuItem>
+
             <NestedMenuItem
               label="Services (Under Construction)"
               parentMenuOpen={!!menuPosition}
