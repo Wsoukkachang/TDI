@@ -75,11 +75,14 @@ function App(props) {
     <div className="app">
       <ButtonAppBar />
       <Toolbar id="back-to-top-anchor" />
+
       <Logo />
 
-      <Element name="test1" className="element">
-        <About />
-      </Element>
+      <LazyLoad height={200} offset={100}>
+        <Element name="test1" className="element">
+          <About />
+        </Element>
+      </LazyLoad>
 
       <LazyLoad height={200} offset={100}>
         <Element name="test2" className="element">

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Oval from "../Images/TDI_Oval_Logo.PNG";
+import Oval from "../Images/TDI_Oval_Logo.png";
 import "animate.css"; // you need to require the css fpr animation
 import "./Logo.css";
 
