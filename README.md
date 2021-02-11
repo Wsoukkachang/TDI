@@ -1,7 +1,7 @@
 # TDI
 Texas Drone Imaging Website
 
-A unique webpage for a Texas Drone business. Developed completely from ground up.
+A unique webpage for a Texas drone business. Developed completely from ground up.
 Client wanted a website so customers could contact him for his business.
 Client also wanted to include a gallery of his work and a weather display to show the conditions of windage.
 
