@@ -11,4 +11,4 @@ Client also wanted to include a gallery of his work and a weather display to sho
  - Applied Windy API for map feature.
  
 # WIP - hosted on Firebase
-https://seentence.web.app/
+https://texas-drone-imaging.web.app/
